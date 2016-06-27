@@ -83,19 +83,12 @@ class GitHubOAuth {
     }
     
     func tokenRequestWithCallback(url: NSURL, options: SaveOptions, completion: GitHubOAuthCompletion){
-        
         do{
-            
             let temporaryCode = try self.temporaryCodeFromCallback(url)
-            
             let requestString = "\(kOAuthBaseURLString)access_token?client_id=\(kGitHubClientID)&client_secret=\(kGitHubClientSecret)&code=\(temporaryCode)"
-            
             if let requestURL = NSURL(string: requestString){
-                
                 let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-                
                 let session = NSURLSession(configuration: sessionConfiguration)
-                
                 session.dataTaskWithURL(requestURL, completionHandler: { (data, response, error) in
                     
                     if let _ = error{
@@ -103,9 +96,7 @@ class GitHubOAuth {
                             completion(success: false); return
                         })
                     }
-                    
                     if let data = data{
-                        
                         if let tokenString = self.stringWith(data){
                             
                             do{
@@ -114,8 +105,6 @@ class GitHubOAuth {
                                         completion(success: self.saveAccessTokenToUserDefaults(token))
                                     })
                                 }
-                                
-                                
                             } catch _ {
                                 NSOperationQueue.mainQueue().addOperationWithBlock({
                                     completion(success: false)
@@ -123,7 +112,6 @@ class GitHubOAuth {
                             }
                         }
                     }
-                    
                 }).resume()
             }
         } catch _ {
