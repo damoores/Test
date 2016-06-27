@@ -12,6 +12,8 @@
 		048B27821D21BEB700103E75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048B27801D21BEB700103E75 /* Main.storyboard */; };
 		048B27841D21BEB700103E75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048B27831D21BEB700103E75 /* Assets.xcassets */; };
 		048B27871D21BEB700103E75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048B27851D21BEB700103E75 /* LaunchScreen.storyboard */; };
+		048B27921D21C08F00103E75 /* GitHubOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B27911D21C08F00103E75 /* GitHubOAuth.swift */; };
+		048B27941D21C21C00103E75 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B27931D21C21C00103E75 /* Credentials.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		048B27831D21BEB700103E75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		048B27861D21BEB700103E75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		048B27881D21BEB700103E75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		048B27911D21C08F00103E75 /* GitHubOAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubOAuth.swift; sourceTree = "<group>"; };
+		048B27931D21C21C00103E75 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +59,39 @@
 			isa = PBXGroup;
 			children = (
 				048B277C1D21BEB700103E75 /* AppDelegate.swift */,
-				048B277E1D21BEB700103E75 /* ViewController.swift */,
-				048B27801D21BEB700103E75 /* Main.storyboard */,
-				048B27831D21BEB700103E75 /* Assets.xcassets */,
-				048B27851D21BEB700103E75 /* LaunchScreen.storyboard */,
+				048B27901D21C03D00103E75 /* Model */,
+				048B278E1D21C02200103E75 /* View */,
+				048B278F1D21C02E00103E75 /* Controller */,
 				048B27881D21BEB700103E75 /* Info.plist */,
 			);
 			path = GoGoGitHub;
+			sourceTree = "<group>";
+		};
+		048B278E1D21C02200103E75 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				048B27801D21BEB700103E75 /* Main.storyboard */,
+				048B27831D21BEB700103E75 /* Assets.xcassets */,
+				048B27851D21BEB700103E75 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		048B278F1D21C02E00103E75 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				048B277E1D21BEB700103E75 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		048B27901D21C03D00103E75 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				048B27911D21C08F00103E75 /* GitHubOAuth.swift */,
+				048B27931D21C21C00103E75 /* Credentials.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +165,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048B27921D21C08F00103E75 /* GitHubOAuth.swift in Sources */,
 				048B277F1D21BEB700103E75 /* ViewController.swift in Sources */,
+				048B27941D21C21C00103E75 /* Credentials.swift in Sources */,
 				048B277D1D21BEB700103E75 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
