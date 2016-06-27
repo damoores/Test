@@ -12,21 +12,25 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
-    func application(app: UIApplication, openURL url: NSURL, options: [String: AnyObject]) -> Bool {
-    print("AppDelegate - OpenURL func URL: ", url)
-        GitHubOAuth.shared.tokenRequestWithCallBack(url, option: SaveOptions.userDefaults) { (success) in
-            if success {
-                print("We have a token")
-            }
-        }
+    
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // Override point for customization after application launch.
         return true
     }
-
-    func applicationWillResignActive(application: UIApplication) {
+    
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        print("AppDelegate - OpenURL Func URL: \(url)")
+        
+        GitHubOAuth.shared.tokenRequestWithCallback(url, options: SaveOptions.userDefaults) { (success) in
+            
+            if success{
+                print("Token granted")
+            } else {print("Nope")}
+        }
+        
+        return true
     }
-
 
 }
 
