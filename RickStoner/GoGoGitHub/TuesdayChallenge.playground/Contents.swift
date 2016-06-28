@@ -26,13 +26,13 @@ highAndLow?.min
 // or another method.. is it more efficient?
 
 func lowHighBySort(arrayOfNumbers: [Double]) -> (min: Double, max: Double)? {
-    let sortedNumbers = arrayOfNumbers.sort { (s1, s2) -> Bool in
-        return s1 > s2
-    }
+    if arrayOfNumbers.isEmpty {return nil }
+    
+    let sortedNumbers = arrayOfNumbers.sort()
     let lowHigh: (min: Double, max: Double)
     lowHigh.max = sortedNumbers.first!
-    lowHigh.min = arrayOfNumbers.last!
-    
+    lowHigh.min = sortedNumbers.last!
+
     return lowHigh
 }
 
