@@ -23,7 +23,8 @@ enum GitHubOAuthError: ErrorType {
 }
 
 enum SaveOptions: Int {
-    case userDefaults
+    case UserDefaults
+    case Keychain
 }
 
 class GitHubOAuth {
@@ -77,12 +78,13 @@ class GitHubOAuth {
      return nil
     }
     
-    func saveAccessTokenToUserDefaults(accessToken: String) -> Bool {
-        NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: kAccessTokenKey)
-        return NSUserDefaults.standardUserDefaults().synchronize()
-    }
     
     func tokenRequestWithCallback(url: NSURL, options: SaveOptions, completion: GitHubOAuthCompletion){
+        
+        func completeOnMain(success: Bool, _ completion: (Bool) -> ()) {
+            NSOperationQueue.mainQueue().addOperationWithBlock({ completion(success) })
+        }
+        
         do{
             let temporaryCode = try self.temporaryCodeFromCallback(url)
             let requestString = "\(kOAuthBaseURLString)access_token?client_id=\(kGitHubClientID)&client_secret=\(kGitHubClientSecret)&code=\(temporaryCode)"
@@ -92,41 +94,74 @@ class GitHubOAuth {
                 session.dataTaskWithURL(requestURL, completionHandler: { (data, response, error) in
                     
                     if let _ = error{
-                        NSOperationQueue.mainQueue().addOperationWithBlock({
-                            completion(success: false); return
-                        })
+                        completeOnMain(false, completion)
                     }
                     if let data = data{
                         if let tokenString = self.stringWith(data){
                             
                             do{
                                 if let token = try self.accessTokenFromString(tokenString){
-                                    NSOperationQueue.mainQueue().addOperationWithBlock({
-                                        completion(success: self.saveAccessTokenToUserDefaults(token))
-                                    })
+                                    
+                                    switch options {
+                                    case .UserDefaults: completeOnMain(self.saveAccessTokenToUserDefaults(token), completion)
+                                    case .Keychain: completeOnMain(self.saveAccessTokenToUserDefaults(token), completion)
+                                    }
                                 }
                             } catch _ {
-                                NSOperationQueue.mainQueue().addOperationWithBlock({
-                                    completion(success: false)
-                                })
+                                completeOnMain(false, completion)
+                                
                             }
                         }
                     }
                 }).resume()
             }
-        } catch _ {
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                completion(success: false)
-            })
+        } catch {
+            completeOnMain(false, completion)
         }
+    }
+    
+    func saveAccessTokenToUserDefaults(accessToken: String) -> Bool {
+        NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: kAccessTokenKey)
+        return NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
+    private func keychainQuery(query: String) -> [String : AnyObject] {
+        return [
+            (kSecClass as String) : kSecClassGenericPassword,
+            (kSecAttrService as String) : query,
+            (kSecAttrAccount as String) : query,
+            (kSecAttrAccessible as String) : kSecAttrAccessibleAfterFirstUnlock
+        ]
+    }
+    
+    private func saveToKeychain(token: String) -> Bool {
+        var query = self.keychainQuery(kAccessTokenKey)
+        query[(kSecValueData as String)] = NSKeyedArchiver.archivedDataWithRootObject(token)
+        SecItemDelete(query)
         
+        return SecItemAdd(query, nil) == errSecSuccess
     }
     
     
     func accessToken() throws -> String? {
-        guard let accessToken = NSUserDefaults.standardUserDefaults().stringForKey(kAccessTokenKey) else {
-            throw GitHubOAuthError.MissingAccessToken("No access token found in insecure location")
+        var query = self.keychainQuery(kAccessTokenKey)
+        query[(kSecReturnData as String)] = kCFBooleanTrue
+        query[(kSecMatchLimit as String)] = kSecMatchLimitOne
+        
+        var dataRef: AnyObject?
+        
+        if SecItemCopyMatching(query, &dataRef) == errSecSuccess {
+            if let data = dataRef as? NSData {
+                if let token = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? String {
+                    return token
+                }
+            }
+        } else {
+            guard let token = NSUserDefaults.standardUserDefaults().stringForKey(kAccessTokenKey) else {
+                throw GitHubOAuthError.MissingAccessToken("No access token found in insecure location")
+            }
+            return token
         }
-        return accessToken
+        return nil
     }
 }
