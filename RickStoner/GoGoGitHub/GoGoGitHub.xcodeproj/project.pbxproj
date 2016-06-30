@@ -13,13 +13,16 @@
 		048B27841D21BEB700103E75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048B27831D21BEB700103E75 /* Assets.xcassets */; };
 		048B27871D21BEB700103E75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048B27851D21BEB700103E75 /* LaunchScreen.storyboard */; };
 		048B27921D21C08F00103E75 /* GitHubOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B27911D21C08F00103E75 /* GitHubOAuth.swift */; };
-		048B27941D21C21C00103E75 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B27931D21C21C00103E75 /* Credentials.swift */; };
 		048B27961D23201E00103E75 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B27951D23201E00103E75 /* HomeViewController.swift */; };
 		048B27981D23221B00103E75 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B27971D23221B00103E75 /* Setup.swift */; };
 		048B279A1D23274B00103E75 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B27991D23274B00103E75 /* API.swift */; };
 		048B279D1D2327A600103E75 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B279C1D2327A600103E75 /* Owner.swift */; };
 		048B279F1D23281F00103E75 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B279E1D23281E00103E75 /* Repository.swift */; };
 		048B27A11D23284900103E75 /* Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B27A01D23284900103E75 /* Additions.swift */; };
+		70ED06E31D243E4700B0A068 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ED06E21D243E4700B0A068 /* Credentials.swift */; };
+		70ED06E51D243FC600B0A068 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ED06E41D243FC600B0A068 /* ProfileViewController.swift */; };
+		70ED06E71D24471000B0A068 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ED06E61D24471000B0A068 /* User.swift */; };
+		70ED06E91D244A5E00B0A068 /* CustomModalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ED06E81D244A5E00B0A068 /* CustomModalTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,13 +34,16 @@
 		048B27861D21BEB700103E75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		048B27881D21BEB700103E75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		048B27911D21C08F00103E75 /* GitHubOAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubOAuth.swift; sourceTree = "<group>"; };
-		048B27931D21C21C00103E75 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		048B27951D23201E00103E75 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		048B27971D23221B00103E75 /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Setup.swift; path = ../Setup.swift; sourceTree = "<group>"; };
 		048B27991D23274B00103E75 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		048B279C1D2327A600103E75 /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		048B279E1D23281E00103E75 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		048B27A01D23284900103E75 /* Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Additions.swift; sourceTree = "<group>"; };
+		70ED06E21D243E4700B0A068 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		70ED06E41D243FC600B0A068 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		70ED06E61D24471000B0A068 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		70ED06E81D244A5E00B0A068 /* CustomModalTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomModalTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,7 @@
 				048B27831D21BEB700103E75 /* Assets.xcassets */,
 				048B27851D21BEB700103E75 /* LaunchScreen.storyboard */,
 				048B27801D21BEB700103E75 /* Main.storyboard */,
+				70ED06E81D244A5E00B0A068 /* CustomModalTransition.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -95,6 +102,7 @@
 			children = (
 				048B27951D23201E00103E75 /* HomeViewController.swift */,
 				048B277E1D21BEB700103E75 /* ViewController.swift */,
+				70ED06E41D243FC600B0A068 /* ProfileViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -104,8 +112,9 @@
 			children = (
 				048B279C1D2327A600103E75 /* Owner.swift */,
 				048B279E1D23281E00103E75 /* Repository.swift */,
-				048B27931D21C21C00103E75 /* Credentials.swift */,
 				048B27971D23221B00103E75 /* Setup.swift */,
+				70ED06E21D243E4700B0A068 /* Credentials.swift */,
+				70ED06E61D24471000B0A068 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -201,11 +210,14 @@
 			files = (
 				048B27961D23201E00103E75 /* HomeViewController.swift in Sources */,
 				048B27A11D23284900103E75 /* Additions.swift in Sources */,
+				70ED06E31D243E4700B0A068 /* Credentials.swift in Sources */,
 				048B279D1D2327A600103E75 /* Owner.swift in Sources */,
 				048B27981D23221B00103E75 /* Setup.swift in Sources */,
 				048B27921D21C08F00103E75 /* GitHubOAuth.swift in Sources */,
+				70ED06E91D244A5E00B0A068 /* CustomModalTransition.swift in Sources */,
+				70ED06E51D243FC600B0A068 /* ProfileViewController.swift in Sources */,
 				048B277F1D21BEB700103E75 /* ViewController.swift in Sources */,
-				048B27941D21C21C00103E75 /* Credentials.swift in Sources */,
+				70ED06E71D24471000B0A068 /* User.swift in Sources */,
 				048B277D1D21BEB700103E75 /* AppDelegate.swift in Sources */,
 				048B279A1D23274B00103E75 /* API.swift in Sources */,
 				048B279F1D23281F00103E75 /* Repository.swift in Sources */,
@@ -360,6 +372,7 @@
 				048B278D1D21BEB700103E75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

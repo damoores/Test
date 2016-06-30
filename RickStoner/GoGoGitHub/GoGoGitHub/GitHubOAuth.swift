@@ -41,7 +41,7 @@ class GitHubOAuth {
             parametersString = parametersString.stringByAppendingString(parameter)
         }
         
-        if let requestURL = NSURL(string: "\(kOAuthBaseURLString)authorize?client_id=\(kGitHubClientID)&scope=\(parametersString)") {
+        if let requestURL = NSURL(string: "\(kOAuthBaseURLString)authorize?client_id=\(kGithubClientID)&scope=\(parametersString)") {
             print("Request URL: ", requestURL)
             UIApplication.sharedApplication().openURL(requestURL)
         }
@@ -87,7 +87,7 @@ class GitHubOAuth {
         
         do{
             let temporaryCode = try self.temporaryCodeFromCallback(url)
-            let requestString = "\(kOAuthBaseURLString)access_token?client_id=\(kGitHubClientID)&client_secret=\(kGitHubClientSecret)&code=\(temporaryCode)"
+            let requestString = "\(kOAuthBaseURLString)access_token?client_id=\(kGithubClientID)&client_secret=\(kGithubClientSecret)&code=\(temporaryCode)"
             if let requestURL = NSURL(string: requestString){
                 let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
                 let session = NSURLSession(configuration: sessionConfiguration)

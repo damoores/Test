@@ -28,7 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GitHubOAuth.shared.tokenRequestWithCallback(url, options: SaveOptions.Keychain) { (success) in
             if success{
                 if let oauthViewController = self.oauthViewController {
-                    UIView.animateWithDuration(0.4, delay: 1.0, options: .CurveEaseInOut, animations: { 
+                    UIView.animateWithDuration(0.4, delay: 1.0, options: .CurveEaseInOut, animations: {
+                        self.homeViewController?.navigationController?.navigationBarHidden = false
                         oauthViewController.view.alpha = 0.0
                         }, completion: { (finished) in
                             oauthViewController.view.removeFromSuperview()
@@ -45,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    // Makr: Setup
+    // Mark: Setup
     
     func checkOAuthStatus() {
         do {
@@ -57,9 +58,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func presentOAuthViewController() {
-        guard let homeViewController = self.window?.rootViewController as? HomeViewController else {
+        
+        guard let navigationController = self.window?.rootViewController as? UINavigationController else {
             fatalError("Check root view controller")
         }
+        
+        navigationController.navigationBarHidden = true
+
+        guard let homeViewController = navigationController.viewControllers.first as? HomeViewController else { fatalError("Home VC?") }
         guard let storyboard = homeViewController.storyboard else { fatalError("Check for storyboard") }
         guard let oauthViewController = storyboard.instantiateViewControllerWithIdentifier(ViewController.id) as?
             ViewController else { fatalError("Error") }
@@ -74,4 +80,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
